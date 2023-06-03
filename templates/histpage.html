@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estadísticas</title>
+    <style>
+        body {
+            background-color: #2b2933;
+            text-align: center;
+        }
+        .header {
+            background-color: #02063a;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        img {
+            max-width: 80%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Estadísticas</h1>
+    </div>
+    <div id="image-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/api/v1/pocket/allBerryStats/hist")
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data.data.image) {
+                        var imageContainer = document.getElementById("image-container");
+                        var image = document.createElement("img");
+                        image.src = "data:image/png;base64," + data.data.image;
+                        imageContainer.appendChild(image);
+                    } else {
+                        console.log("No se encontró la imagen en la respuesta JSON");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error al realizar la solicitud:", error);
+                });
+        });
+    </script>
+</body>
+</html>

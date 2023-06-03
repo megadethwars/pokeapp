@@ -30,6 +30,10 @@ api.add_namespace(ns=nsPocket,path="/api/v1/pocket")
 def home():
   return render_template("index.html")
 
+@app.route("/hist")
+def hist():
+  return render_template("histpage.html")
+
 if __name__ == '__main__':
 
   # run app
