@@ -12,10 +12,9 @@ class ServiceApi():
             url = current_app.config["POKE_URL"]
 
             response = requests.get(url+"/"+"berry")
-            
+
             if response.status_code!=200:
-                print(response.text)
-                print(response.status_code)
+
                 return returnCodes.custom_response({}, response.status_code, "APP-11",str(response.text))
 
             data = response.json()
@@ -50,6 +49,6 @@ class ServiceApi():
                 "mean_growth_time": statistics.mean(growth_times),
                 "frequency_growth_time": frequency_growth_time
             }
-            return returnCodes.custom_response(response_data, 201, "APP-1")
+            return returnCodes.custom_response(response_data, 200, "APP-3")
         except Exception as ex:
             return returnCodes.custom_response({}, 500, "APP-7",str(ex))

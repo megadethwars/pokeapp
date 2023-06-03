@@ -10,14 +10,9 @@ env_name = os.getenv('FLASK_ENV')
 print(env_name)
 app = create_app(env_name)
 
-#app = Flask(__name__)
-
-#@app.route('/')
-#def get():
-#  return {'hello': 'world1'}
-
-#migrate:     flask db migrate --directory migrationsDev
-#upgrade:     flask db upgrade --directory migrationsDev
+@app.route("/index")
+def index():
+  return render_template("index.html")
 
 if __name__ == '__main__':
 

@@ -27,12 +27,7 @@ def create_app(env_name):
     app.config.from_object(app_config[env_name])
 
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pymssql://forrerunner97:Asterisco97@inventarioavs1.database.windows.net/avsInventory'
-
-    
-   
-    api = Api(app,title="Poke API", version="1.1", description="A simple inventory API",)
-
+    api = Api(app,title="Poke API", version="1.1", description="A simple poke API",)
 
 
     api.add_namespace(ns=nsPocket,path="/api/v1/pocket")
