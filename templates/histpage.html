@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Estadísticas</title>
+    <title>Estadísticas de Berries</title>
     <style>
         body {
-            background-color: #2b2933;
+            background-color: #222222;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
             text-align: center;
         }
         .header {
-            background-color: #02063a;
-            color: #ffffff;
+            background-color: #1a237e;
             padding: 20px;
-            text-align: center;
         }
         h1 {
             font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .spinner {
+            display: none;
+        }
+        .alert {
+            color: #ff0000;
             font-weight: bold;
         }
         img {
@@ -25,15 +35,29 @@
 </head>
 <body>
     <div class="header">
-        <h1>Estadísticas</h1>
+        <h1>Estadísticas de Berries</h1>
     </div>
+    <div id="spinner" class="spinner">
+        <img style="width: 10%; height: 100px;" src="/static/css/spin.gif" alt="Cargando...">
+    </div>
+    <div id="alert" class="alert"></div>
     <div id="image-container"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            var spinner = document.getElementById("spinner");
+            var alertDiv = document.getElementById("alert");
+
+            spinner.style.display = "block";
+
             fetch("/api/v1/pocket/allBerryStats/hist")
                 .then(function(response) {
-                    return response.json();
+                    spinner.style.display = "none";
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error en la respuesta del servidor");
+                    }
                 })
                 .then(function(data) {
                     if (data.data.image) {
@@ -42,11 +66,12 @@
                         image.src = "data:image/png;base64," + data.data.image;
                         imageContainer.appendChild(image);
                     } else {
-                        console.log("No se encontró la imagen en la respuesta JSON");
+                        alertDiv.textContent = "No se encontró la imagen en la respuesta JSON";
                     }
                 })
                 .catch(function(error) {
-                    console.log("Error al realizar la solicitud:", error);
+                    spinner.style.display = "none";
+                    alertDiv.textContent = "Ocurrió un error al cargar los datos: " + error.message;
                 });
         });
     </script>
