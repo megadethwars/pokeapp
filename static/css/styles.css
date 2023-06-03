@@ -67,3 +67,14 @@ body {
   font-weight: bold;
 }
 
+#loading {
+  display: none;
+  text-align: center;
+  
+  font-weight: 100;
+}
+
+#loading i {
+  margin-right: 5px;
+}
+

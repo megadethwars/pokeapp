@@ -10,6 +10,12 @@
     <div class="encabezado">
         <h1 class="titulo">Statistics PokeAPI</h1>
     </div>
+
+    <div id="loading" style="display: none; font-size: 20px; color: white;">
+        <i class="fa fa-spinner fa-spin"></i> Cargando...
+    </div>
+    <div id="alert" style="display: none;"></div>
+
     <div id="histograma-container" style="width: 50%; height: 300px;">
         <canvas id="histogram" class="hist"></canvas>
     </div>
@@ -41,12 +47,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("alert").style.display = "none";
             // Realizar la petición REST al endpoint local
             fetch("/api/v1/pocket/allBerryStats")
                 .then(function(response) {
                     return response.json();
                 })
                 .then(function(data) {
+                    
+                    document.getElementById("loading").style.display = "none";
                     // Obtener los datos del response
                     var frequencyGrowthTime = data.data.frequency_growth_time;
 
@@ -70,6 +80,9 @@
 
                 })
                 .catch(function(error) {
+                    
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("alert").style.display = "none";
                     console.log(error);
                 });
         });
