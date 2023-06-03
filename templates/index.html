@@ -10,26 +10,33 @@
     <div class="encabezado">
         <h1 class="titulo">Statistics PokeAPI</h1>
     </div>
-    <div id="histograma-container" style="width: 50%; height: 400px;">
+    <div id="histograma-container" style="width: 50%; height: 300px;">
         <canvas id="histogram" class="hist"></canvas>
     </div>
-    <div id="statistics">
-        <div class="statistic">
-          <p>Min Growth Time: <span id="minGrowthTime"></span></p>
+
+    <div id="statistics" class="statistics-container">
+        <div class="row">
+          <div class="statistic statistic-min">
+            <p style=" font-weight: bold;">Min Growth Time: <span id="minGrowthTime"></span></p>
+          </div>
+          <div class="statistic statistic-max">
+            <p style=" font-weight: bold;">Max Growth Time: <span id="maxGrowthTime"></span></p>
+          </div>
+          <div class="statistic statistic-mean">
+            <p style=" font-weight: bold;">Mean Growth Time: <span id="meanGrowthTime"></span></p>
+          </div>
         </div>
-        <div class="statistic">
-          <p>Max Growth Time: <span id="maxGrowthTime"></span></p>
+        <div class="row">
+          <div class="statistic statistic-median">
+            <p style=" font-weight: bold;">Median Growth Time: <span id="medianGrowthTime"></span></p>
+          </div>
+          <div class="statistic statistic-variance">
+            <p style=" font-weight: bold;">Variance Growth Time: <span id="varianceGrowthTime"></span></p>
+          </div>
         </div>
-        <div class="statistic">
-          <p>Mean Growth Time: <span id="meanGrowthTime"></span></p>
-        </div>
-        <div class="statistic">
-          <p>Median Growth Time: <span id="medianGrowthTime"></span></p>
-        </div>
-        <div class="statistic">
-          <p>Variance Growth Time: <span id="varianceGrowthTime"></span></p>
-        </div>
-    </div>
+      </div>
+      
+      
       
 
     <script>
