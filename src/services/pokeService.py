@@ -3,6 +3,8 @@ from flask import Flask, request, json, Response, Blueprint, g,current_app
 import requests
 import statistics
 import matplotlib.pyplot as plt
+import base64
+import io
 
 class ServiceApi():
 
@@ -40,16 +42,6 @@ class ServiceApi():
                 else:
                     frequency_growth_time[number] = 1
 
-            response_data = {
-                "berries_names": berries_names,
-                "min_growth_time": min(growth_times),
-                "median_growth_time": float(format(float(statistics.median(growth_times)), ".0f")),
-                "max_growth_time": max(growth_times),
-                "variance_growth_time": round(statistics.variance(growth_times),2),
-                "mean_growth_time": statistics.mean(growth_times),
-                "frequency_growth_time": frequency_growth_time
-            }
-
             labels1 = ['Min Growth Time', 'Max Growth Time', 'Mean Growth Time', 'Median Growth Time', 'Variance Growth Time']
             values1 = [min(growth_times), max(growth_times), statistics.mean(growth_times), float(format(float(statistics.median(growth_times)), ".0f")), round(statistics.variance(growth_times),2)]
 
@@ -70,15 +62,19 @@ class ServiceApi():
             axs[1].set_title('frequency_growth_time')
             axs[1].set_xlabel('Variables')
             axs[1].set_ylabel('Valores')
-            
 
-            # Ajustar el espaciado entre los subplots
             plt.tight_layout()
+            buffer = io.BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
 
-          
-            plt.show()
+            # Convertir la imagen a formato base64
+            image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+            image_str = str(image_base64)
+            
+            print(image_str)
 
-            return returnCodes.custom_response(response_data, 200, "APP-3")
+            return returnCodes.custom_response({"image":image_str}, 200, "APP-3")
         except Exception as ex:
             return returnCodes.custom_response({}, 500, "APP-7",str(ex))
 
