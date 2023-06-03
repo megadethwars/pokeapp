@@ -12,7 +12,8 @@ app_codes = {
     "APP-8": "Recursos creados exitosamente",
     "APP-9": "Recurso eliminado exitosamente",
     "APP-10": "Acceso no autorizado",
-    "APP-11": "El operador/supervisor no tiene permisos para realizar estas operaciones"
+    "APP-11": "ocurrio un conflicto al llamar a la API",
+
 }
 
 
