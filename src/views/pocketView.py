@@ -30,6 +30,17 @@ class UsersList(Resource):
         serviceapi = ServiceApi()
         return serviceapi.processApi()
 
+@nsPocket.route("/allBerryStats/hist")
+class UsersList(Resource):
+    @nsPocket.doc("endpoint para consumir estadisticas")
+    @nsPocket.response(200, "Consulta exitosa")
+    @nsPocket.response(500, "Ocurrio un error interno")
+    @nsPocket.response(404, "Recurso no encontrado")
+    @nsPocket.response(409, "Ocurrio un conflicto interno")
+    def get(self):
+
+        serviceapi = ServiceApi()
+        return serviceapi.processApiHist()
 
 
 
