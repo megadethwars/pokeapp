@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-    <title>Azure Web Apps</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Estadísticas de Berries</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
 <body>
-    <h1>Welcome to Azure Web OK Apps!!</h1>
-</body>
+    <h1>Estadísticas </h1>
+    <div id="histogram"></div>
+    <div id="statistics"></div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Realizar la petición REST al endpoint local
+            fetch("/api/v1/pocket/allBerryStats")
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    // Obtener los datos del response
+                    var frequencyGrowthTime = data.data.frequency_growth_time;
+
+                    // Mostrar el histograma de frequency_growth_time
+                    var histogramData = [];
+                    for (var key in frequencyGrowthTime) {
+                        histogramData.push({
+                            x: key,
+                            y: frequencyGrowthTime[key]
+                        });
+                    }
+                    dat={
+                        "1":1,
+                        "2":4,
+                        "3":6
+                    }
+                    drawHistogram(dat);
+
+                    // Mostrar otros indicadores de las estadísticas
+                     var statisticsHTML = "<p>Min Growth Time: " + data.data.min_growth_time + "</p>";
+                     statisticsHTML += "<p>Max Growth Time: " + data.data.max_growth_time + "</p>";
+                     statisticsHTML += "<p>Mean Growth Time: " + data.data.mean_growth_time + "</p>";
+                     statisticsHTML += "<p>Median Growth Time: " + data.data.median_growth_time + "</p>";
+                     statisticsHTML += "<p>Variance Growth Time: " + data.data.variance_growth_time + "</p>";
+                     document.getElementById("statistics").innerHTML = statisticsHTML;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
+
+        // Función para dibujar el histograma usando Chart.js
+        function drawHistogram(data) {
+            var ctx = document.getElementById("histogram");
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(function(item) { return item.x; }),
+                    datasets: [{
+                        label: 'Frequency',
+                        data: data.map(function(item) { return item.y; }),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
 </html>

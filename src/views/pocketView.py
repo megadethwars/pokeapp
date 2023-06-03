@@ -1,6 +1,6 @@
-# /src/views/GiroView
+# /src/views/pocketView
 
-from flask import Flask, request, json, Response, Blueprint, g,current_app
+from flask import Flask, request, json, Response, Blueprint, g,current_app,render_template
 from marshmallow import ValidationError
 import requests
 import statistics
@@ -18,7 +18,7 @@ api = Api(poke_api)
 nsPocket = api.namespace("Poke", description="API operations for poke API")
 
 
-@nsPocket.route("")
+@nsPocket.route("/allBerryStats")
 class UsersList(Resource):
     @nsPocket.doc("endpoint para consumir estadisticas")
     @nsPocket.response(200, "Consulta exitosa")
@@ -29,6 +29,9 @@ class UsersList(Resource):
 
         serviceapi = ServiceApi()
         return serviceapi.processApi()
+
+
+
 
 
 
