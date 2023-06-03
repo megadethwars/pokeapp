@@ -7,6 +7,7 @@ import statistics
 from ..shared import returnCodes
 from flask_restx import Api,fields,Resource
 from werkzeug.security import generate_password_hash, check_password_hash
+from ..services.pokeService import ServiceApi
 
 app = Flask(__name__)
 poke_api = Blueprint("users_api", __name__)
@@ -30,6 +31,10 @@ def createUsers(req_data, listaObjetosCreados, listaErrores):
 class UsersList(Resource):
     @nsPocket.doc("lista de  usuarios")
     def get(self):
+
+        serviceapi = ServiceApi()
+        return serviceapi.processApi()
+
         url = current_app.config["POKE_URL"]
         print(url)
 
