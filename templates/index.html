@@ -3,11 +3,34 @@
 <head>
     <title>Estadísticas de Berries</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 </head>
 <body>
-    <h1>Estadísticas </h1>
-    <div id="histogram"></div>
-    <div id="statistics"></div>
+    <div class="encabezado">
+        <h1 class="titulo">Statistics PokeAPI</h1>
+    </div>
+    <div id="histograma-container" style="width: 50%; height: 400px;">
+        <canvas id="histogram" class="hist"></canvas>
+    </div>
+    <div id="statistics">
+        <div class="statistic">
+          <p>Min Growth Time: <span id="minGrowthTime"></span></p>
+        </div>
+        <div class="statistic">
+          <p>Max Growth Time: <span id="maxGrowthTime"></span></p>
+        </div>
+        <div class="statistic">
+          <p>Mean Growth Time: <span id="meanGrowthTime"></span></p>
+        </div>
+        <div class="statistic">
+          <p>Median Growth Time: <span id="medianGrowthTime"></span></p>
+        </div>
+        <div class="statistic">
+          <p>Variance Growth Time: <span id="varianceGrowthTime"></span></p>
+        </div>
+    </div>
+      
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -28,20 +51,16 @@
                             y: frequencyGrowthTime[key]
                         });
                     }
-                    dat={
-                        "1":1,
-                        "2":4,
-                        "3":6
-                    }
-                    drawHistogram(dat);
+                    
+                    drawHistogram(histogramData);
 
                     // Mostrar otros indicadores de las estadísticas
-                     var statisticsHTML = "<p>Min Growth Time: " + data.data.min_growth_time + "</p>";
-                     statisticsHTML += "<p>Max Growth Time: " + data.data.max_growth_time + "</p>";
-                     statisticsHTML += "<p>Mean Growth Time: " + data.data.mean_growth_time + "</p>";
-                     statisticsHTML += "<p>Median Growth Time: " + data.data.median_growth_time + "</p>";
-                     statisticsHTML += "<p>Variance Growth Time: " + data.data.variance_growth_time + "</p>";
-                     document.getElementById("statistics").innerHTML = statisticsHTML;
+                    document.getElementById("minGrowthTime").textContent = data.data.min_growth_time;
+                    document.getElementById("maxGrowthTime").textContent = data.data.max_growth_time;
+                    document.getElementById("meanGrowthTime").textContent = data.data.mean_growth_time;
+                    document.getElementById("medianGrowthTime").textContent = data.data.median_growth_time;
+                    document.getElementById("varianceGrowthTime").textContent = data.data.variance_growth_time;
+
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -49,6 +68,9 @@
         });
 
         // Función para dibujar el histograma usando Chart.js
+
+
+
         function drawHistogram(data) {
             var ctx = document.getElementById("histogram");
             new Chart(ctx, {
@@ -56,10 +78,10 @@
                 data: {
                     labels: data.map(function(item) { return item.x; }),
                     datasets: [{
-                        label: 'Frequency',
+                        label: 'frequency_growth_time',
                         data: data.map(function(item) { return item.y; }),
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(10, 10, 220, 0.2)',
+                        borderColor: 'rgba(60, 60, 192, 1)',
                         borderWidth: 1
                     }]
                 },

@@ -1,0 +1,36 @@
+body {
+    background-color: #1b1b29; /* Reemplaza este valor con el color que desees */
+  }
+
+.titulo {
+  text-align: center;
+  color: #0492e4; /* Color claro, puedes cambiarlo según tus preferencias */
+}
+
+.encabezado {
+  background-color: #050b3f; /* Color de fondo contrastante */
+  padding: 10px; /* Espacio de relleno para la barra de encabezado */
+}
+
+#histogram {
+  color: #ffffff; /* Color blanco para el texto */
+}
+
+.hist {
+  color: #ffffff; /* Color blanco para el texto */
+}
+
+.statistic {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#minGrowthTime,
+#maxGrowthTime,
+#meanGrowthTime,
+#medianGrowthTime,
+#varianceGrowthTime {
+  font-weight: bold;
+}
