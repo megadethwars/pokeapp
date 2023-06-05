@@ -27,7 +27,6 @@ def create_main_app():
 
   api = Api(app,title="Poke API", version="1.1", description="A simple poke API",)
 
-
   api.add_namespace(ns=nsPocket,path="/api/v1/pocket")
   return app
 
@@ -49,4 +48,4 @@ def health():
 if __name__ == '__main__':
 
   # run app
-  app.run(debug=True,host='0.0.0.0',port=5000)
+  app.run(debug=True,host='0.0.0.0',port=int(app.config['PORT']))

@@ -6,7 +6,7 @@ class Local(object):
     
     DEBUG = True
     TESTING = False
-    PROJECT_ID = "yas-dev-tpm"
+    PORT = 5000
     POKE_URL="https://pokeapi.co/api/v2"
 
 class Dev(object):
@@ -16,7 +16,7 @@ class Dev(object):
     
     DEBUG = True
     TESTING = False
-    PROJECT_ID = "yas-dev-tpm"
+    PORT = 5000
     POKE_URL="https://pokeapi.co/api/v2"
 
 app_config = {
