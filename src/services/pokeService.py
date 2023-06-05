@@ -1,5 +1,5 @@
 from ..shared import returnCodes
-from flask import Flask, request, json, Response, Blueprint, g,current_app
+from flask import Flask, json, Response, Blueprint, g,current_app
 import requests
 import statistics
 import matplotlib.pyplot as plt
@@ -7,6 +7,11 @@ import base64
 import io
 
 class ServiceApi():
+
+    """
+        Methodo encargado de generar estadisticas de berrys, consulta cada url de estas y toma el growth_time para realizar
+        las estadisticas, adicionalmente se genera el histograma de matplotlib y se envia como base64
+    """
 
     def processApiHist(self):
     
@@ -21,7 +26,6 @@ class ServiceApi():
 
             data = response.json()
             berries = data['results']
-            berries_names = [berry['name'] for berry in berries]
 
             detailed_data = []
             for berry in berries:
@@ -72,12 +76,17 @@ class ServiceApi():
             image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
             image_str = str(image_base64)
             
-            print(image_str)
+            
 
             return returnCodes.custom_response({"image":image_str}, 200, "APP-3")
         except Exception as ex:
             return returnCodes.custom_response({}, 500, "APP-7",str(ex))
+        
 
+    """
+        Methodo encargado de generar estadisticas de berrys, consulta cada url de estas y toma el growth_time para realizar
+        las estadisticas y generarlas en el response
+    """
     def processApi(self):
 
         try:

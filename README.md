@@ -27,5 +27,5 @@
    - https://pokeapiv1.azurewebsites.net/api/v1/pocket/allBerryStats/hist  se desplegara nn json con una imagen en base64
 4. En el navegador se puede consultar la url: https://pokeapiv1.azurewebsites.net/home se desplegaran estadisticas
    en html
-5. La siguiente url https://pokeapiv1.azurewebsites.net/hist se desplegara el histograma de dichas estadisticas
+5. La siguiente url https://pokeapiv1.azurewebsites.net/hist se desplegara el histograma de dichas estadisticas de matplotlib
 

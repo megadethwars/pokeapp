@@ -12,7 +12,7 @@
     </div>
 
     <div id="loading" style="display: none; font-size: 20px; color: white;">
-        <i class="fa fa-spinner fa-spin"></i> Cargando...
+        <i class="fa fa-spinner fa-spin"></i> Cargando....
     </div>
     <div id="alert" style="display: none;"></div>
 
@@ -49,7 +49,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("loading").style.display = "block";
             document.getElementById("alert").style.display = "none";
-            // Realizar la petición REST al endpoint local
+            
             fetch("/api/v1/pocket/allBerryStats")
                 .then(function(response) {
                     return response.json();
@@ -71,7 +71,7 @@
                     
                     drawHistogram(histogramData);
 
-                    // Mostrar otros indicadores de las estadísticas
+                  
                     document.getElementById("minGrowthTime").textContent = data.data.min_growth_time;
                     document.getElementById("maxGrowthTime").textContent = data.data.max_growth_time;
                     document.getElementById("meanGrowthTime").textContent = data.data.mean_growth_time;
@@ -86,10 +86,6 @@
                     console.log(error);
                 });
         });
-
-        // Función para dibujar el histograma usando Chart.js
-
-
 
         function drawHistogram(data) {
             var ctx = document.getElementById("histogram");

@@ -1,23 +1,23 @@
 body {
-    background-color: #1b1b29; /* Reemplaza este valor con el color que desees */
+    background-color: #1b1b29; 
   }
 
 .titulo {
   text-align: center;
-  color: #0492e4; /* Color claro, puedes cambiarlo según tus preferencias */
+  color: #0492e4; 
 }
 
 .encabezado {
-  background-color: #050b3f; /* Color de fondo contrastante */
-  padding: 10px; /* Espacio de relleno para la barra de encabezado */
+  background-color: #050b3f; 
+  padding: 10px; 
 }
 
 #histogram {
-  color: #ffffff; /* Color blanco para el texto */
+  color: #ffffff; 
 }
 
 .hist {
-  color: #ffffff; /* Color blanco para el texto */
+  color: #ffffff; 
 }
 
 .statistics-container {
