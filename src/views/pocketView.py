@@ -20,7 +20,7 @@ nsPocket = api.namespace("Poke", description="API operations for poke API")
 
 @nsPocket.route("/allBerryStats")
 class UsersList(Resource):
-    @nsPocket.doc("endpoint para consumir estadisticas")
+    @nsPocket.doc("endpoint para consumir estadisticas de berries y los nombres")
     @nsPocket.response(200, "Consulta exitosa")
     @nsPocket.response(500, "Ocurrio un error interno")
     @nsPocket.response(404, "Recurso no encontrado")

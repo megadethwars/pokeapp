@@ -56,7 +56,7 @@ class ServiceApi():
 
             # Histograma 1
             axs[0].bar(labels1, values1)
-            axs[0].set_title('growth_time')
+            axs[0].set_title('growth_time berrys')
             axs[0].set_xlabel('Variables')
             axs[0].set_ylabel('Valores')
             axs[0].set_xticklabels(labels1, rotation=45, ha='right')
