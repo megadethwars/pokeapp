@@ -21,9 +21,9 @@
 1. la URL de implementacion es la siguiente: https://httppokeapiv1.azurewebsites.net/
 2. Al entrar a dicha url, se desplegara la documentacion Swagger.
 3. a continuacion se desplegaran dos endpoints tipo "GET":
-   - /api/v1/pocket/allBerryStats  se desplegara el json de las estadisticas de los berrys
-   - /api/v1/pocket/allBerryStats/hist  se desplegara nn json con una imagen en base64
-4. En el navegador se puede consultar la url: `https://pokeapiv1.azurewebsites.net/home` se desplegaran estadisticas
+   - https://pokeapiv1.azurewebsites.net/api/v1/pocket/allBerryStats  se desplegara el json de las estadisticas de los berrys
+   - https://pokeapiv1.azurewebsites.net/api/v1/pocket/allBerryStats/hist  se desplegara nn json con una imagen en base64
+4. En el navegador se puede consultar la url: https://pokeapiv1.azurewebsites.net/home se desplegaran estadisticas
    en html
-5. La siguiente url `https://pokeapiv1.azurewebsites.net/hist` se desplegara el histograma de dichas estadisticas
+5. La siguiente url https://pokeapiv1.azurewebsites.net/hist se desplegara el histograma de dichas estadisticas
 
