@@ -16,7 +16,7 @@ def create_main_app():
   env_name = os.getenv('FLASK_ENV')
   print("envirorment is: ")
   print(env_name)
-  #app = create_app(env_name)
+  
   app = Flask(__name__)
 
 
@@ -44,6 +44,7 @@ def hist():
 @app.route("/health")
 def health():
   return "OK"
+
 
 if __name__ == '__main__':
 
