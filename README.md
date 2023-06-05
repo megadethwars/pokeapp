@@ -14,6 +14,8 @@
    - Para Windows: `venv\Scripts\activate`.
    - Para Linux/Mac: `source venv/bin/activate`.
 5. Instala las dependencias del proyecto: `pip install -r requirements.txt`.
+6. Agrega en la raiz del proyecto un archivo .env y agrega las siguientes variables:
+   - FLASK_ENV=local
 6. Ejecuta la aplicación: `python app.py`.
 7. para probar utiliza el comando `pytest test/pokeApiTest.py`
 
