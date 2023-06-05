@@ -1,15 +1,12 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask, current_app, render_template
-from src.appinit import create_app
 from flask_cors import CORS
 from src.config import app_config
 from flask_restx import Api, fields, Resource
 from src.views.pocketView import nsPocket
 
 load_dotenv()
-
-
 
 def create_main_app():
 
