@@ -42,7 +42,7 @@ def hist():
   return render_template("histpage.html")
 
 @app.route("/health")
-def hist():
+def health():
   return "OK"
 
 if __name__ == '__main__':
