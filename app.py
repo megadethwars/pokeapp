@@ -12,8 +12,7 @@ load_dotenv()
 
 
 def create_main_app():
-      
-  port = os.getenv('FLASK_PORT')
+
   env_name = os.getenv('FLASK_ENV')
 
   #app = create_app(env_name)
@@ -44,4 +43,4 @@ def hist():
 if __name__ == '__main__':
 
   # run app
-    app.run(debug=True,host='0.0.0.0',port=5000)
+  app.run(debug=True,host='0.0.0.0',port=5000)
