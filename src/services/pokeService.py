@@ -14,7 +14,6 @@ class ServiceApi():
     """
 
     def processApiHist(self):
-    
         try:
             url = current_app.config["POKE_URL"]
 
@@ -64,24 +63,23 @@ class ServiceApi():
             # Histograma 2
             axs[1].bar(labels2, values2)
             axs[1].set_title('frequency_growth_time')
-            axs[1].set_xlabel('Variables')
-            axs[1].set_ylabel('Valores')
+            axs[1].set_xlabel('growth_time')
+            axs[1].set_ylabel('frequency')
 
             plt.tight_layout()
             buffer = io.BytesIO()
             plt.savefig(buffer, format='png')
             buffer.seek(0)
 
-            # Convertir la imagen a formato base64
+            #a formato base64
             image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
             image_str = str(image_base64)
-            
-            
+
 
             return returnCodes.custom_response({"image":image_str}, 200, "APP-3")
         except Exception as ex:
             return returnCodes.custom_response({}, 500, "APP-7",str(ex))
-        
+
 
     """
         Methodo encargado de generar estadisticas de berrys, consulta cada url de estas y toma el growth_time para realizar
