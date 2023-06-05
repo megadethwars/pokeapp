@@ -7,7 +7,6 @@ class Local(object):
     DEBUG = True
     TESTING = False
     PROJECT_ID = "yas-dev-tpm"
-    SQLALCHEMY_DATABASE_URI = "mssql+pymssql://master:peacesells@DESKTOP-FGFDBVD\\TEW_SQLEXPRESS/avsInventory"
     POKE_URL="https://pokeapi.co/api/v2"
 
 class Dev(object):
@@ -18,7 +17,6 @@ class Dev(object):
     DEBUG = True
     TESTING = False
     PROJECT_ID = "yas-dev-tpm"
-    SQLALCHEMY_DATABASE_URI = "mssql+pymssql://master:peacesells@DESKTOP-FGFDBVD\\TEW_SQLEXPRESS/avsInventory"
     POKE_URL="https://pokeapi.co/api/v2"
 
 app_config = {
