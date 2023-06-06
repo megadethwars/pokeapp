@@ -13,16 +13,16 @@ def create_main_app():
   env_name = os.getenv('FLASK_ENV')
   print("envirorment is: ")
   print(env_name)
-  
+
   app = Flask(__name__)
 
 
   cors = CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
-      
+
   app.config.from_object(app_config[env_name])
 
 
-  api = Api(app,title="Poke API", version="1.1", description="A simple poke API",)
+  api = Api(app,title="Poke API", version="1.1", description="A simple poke API to Statistic berrys",)
 
   api.add_namespace(ns=nsPocket,path="/api/v1/pocket")
   return app
