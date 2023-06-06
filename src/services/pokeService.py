@@ -5,8 +5,10 @@ import statistics
 import matplotlib.pyplot as plt
 import base64
 import io
-
+from ..models.BerryStats import BerryModel
 class ServiceApi():
+
+
 
     """
         Methodo encargado de generar estadisticas de berrys, consulta cada url de estas y toma el growth_time para realizar
@@ -36,20 +38,13 @@ class ServiceApi():
 
             growth_times = [int(berry['growth_time']) for berry in detailed_data]
 
-
-            frequency_growth_time = {}
-
-            for number in growth_times:
-                if number in frequency_growth_time:
-                    frequency_growth_time[number] += 1
-                else:
-                    frequency_growth_time[number] = 1
+            berry_model = BerryModel([], growth_times)
 
             labels1 = ['Min Growth Time', 'Max Growth Time', 'Mean Growth Time', 'Median Growth Time', 'Variance Growth Time']
-            values1 = [min(growth_times), max(growth_times), statistics.mean(growth_times), float(format(float(statistics.median(growth_times)), ".0f")), round(statistics.variance(growth_times),2)]
+            values1 = [berry_model.min_growth_time, berry_model.max_growth_time, berry_model.mean_growth_time, float(format(float(berry_model.median_growth_time), ".0f")), round(berry_model.variance_growth_time,2)]
 
-            labels2 = list(frequency_growth_time.keys())
-            values2 = list(frequency_growth_time.values())
+            labels2 = list(berry_model.frequency_growth_time.keys())
+            values2 = list(berry_model.frequency_growth_time.values())
 
             fig, axs = plt.subplots(1, 2, figsize=(10, 5))
 
@@ -111,22 +106,16 @@ class ServiceApi():
             growth_times = [int(berry['growth_time']) for berry in detailed_data]
 
 
-            frequency_growth_time = {}
-
-            for number in growth_times:
-                if number in frequency_growth_time:
-                    frequency_growth_time[number] += 1
-                else:
-                    frequency_growth_time[number] = 1
+            berry_model = BerryModel(berries_names, growth_times)
 
             response_data = {
                 "berries_names": berries_names,
-                "min_growth_time": min(growth_times),
-                "median_growth_time": float(format(float(statistics.median(growth_times)), ".0f")),
-                "max_growth_time": max(growth_times),
-                "variance_growth_time": round(statistics.variance(growth_times),2),
-                "mean_growth_time": statistics.mean(growth_times),
-                "frequency_growth_time": frequency_growth_time
+                "min_growth_time":  berry_model.min_growth_time,
+                "median_growth_time": float(format(float(berry_model.median_growth_time), ".0f")),
+                "max_growth_time": berry_model.max_growth_time,
+                "variance_growth_time": round(berry_model.variance_growth_time,2),
+                "mean_growth_time": berry_model.mean_growth_time,
+                "frequency_growth_time": berry_model.frequency_growth_time
             }
 
 
