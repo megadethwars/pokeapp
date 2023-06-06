@@ -20,7 +20,7 @@
 7. para probar unit test utiliza el comando `pytest test/pokeApiTest.py`
 
 ## probar los endpoints de API
-1. la URL de implementacion es la siguiente: https://httppokeapiv1.azurewebsites.net/
+1. la URL de implementacion es la siguiente: https://pokeapiv1.azurewebsites.net/
 2. Al entrar a dicha url, se desplegara la documentacion Swagger.
 3. a continuacion se desplegaran dos endpoints tipo "GET":
    - https://pokeapiv1.azurewebsites.net/api/v1/pocket/allBerryStats  se desplegara el json de las estadisticas de los berrys (este endpoint se puede probar directo desde postman yo de manera local mediante http://127.0.0.1:5000/api/v1/pocket/allBerryStats)
